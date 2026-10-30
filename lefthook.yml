@@ -1,0 +1,15 @@
+pre-merge-commit:
+  only: &main
+    - ref: main
+  parallel: true
+  jobs:
+    - &tsc
+      name: tsc
+      run: 'pnpm exec tsc'
+      glob: '*.{ts,tsx}'
+
+pre-commit:
+  parallel: true
+  jobs:
+    - <<: *tsc
+      only: *main
