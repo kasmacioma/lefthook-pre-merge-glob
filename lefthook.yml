@@ -6,6 +6,7 @@ pre-merge-commit:
     - &tsc
       name: tsc
       run: 'pnpm exec tsc'
+      files: 'git diff --name-only --cached'
       glob: '*.{ts,tsx}'
 
 pre-commit:
